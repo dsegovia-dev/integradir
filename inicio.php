@@ -108,13 +108,13 @@
                                             $conn = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
                                             $email = $_GET['email'];
 
-                                            $sql = "SELECT nombre, ap, am FROM users WHERE email = '$email'";
+                                            $sql = "SELECT name, ap, am FROM Users WHERE email = '$email'";
                                             $result = mysqli_query($conn, $sql);
 
                                             if($row = mysqli_fetch_array($result)){
-                                                echo "Bienvenido: " . $row['nombre']. $row['ap']. $row['am'];
-                                            } 
-                                            
+                                                echo "Bienvenido: " . $row['name']. $row['ap']. $row['am'];
+                                            }
+
                                             ?>
                                         </span>
                                     </div>

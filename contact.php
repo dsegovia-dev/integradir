@@ -98,7 +98,7 @@
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-group">
-                                            <input type="text" class="form-control" id="zipcode" placeholder="zip code">
+                                            <input type="text" class="form-control" id="zipcode" placeholder="zip code" name="zip">
                                         </div>
                                     </div>
                                     <div class="col-md-3">
@@ -111,7 +111,6 @@
                                                 class="fa fa-angle-double-right"></i></button>
                                     </div> -->
                                 </div>
-                            </form>
                         </div>
                     </div>
                 </div>
@@ -125,7 +124,7 @@
                     <div class="body-text">Write your name in the right fields. Also write your imaginary card number.
                         By
                         clicking CCV field card will turn.</div>
-                    <form id="form-purchase" action="compra.php?email-<?php echo $email; ?>" method="post">
+
                         <div class="form-container">
 
                             <input type="hidden" name="email" value="<?php $email ?>">
@@ -137,6 +136,7 @@
 
                             <div class="card-wrapper"></div>
                             <input type="submit" name="submit" value="Submit">
+
                     </form>
                 </div>
             </div>
