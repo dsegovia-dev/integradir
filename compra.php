@@ -11,7 +11,8 @@ if (isset($_POST['submit'])) {
   }
   $queryid="SELECT idUser FROM Users WHERE email = '$email'";
   $id=mysqli_query($conn, $queryid);
-  $iddone = mysqli_fetch_object($id);
+  $iddone = mysqli_fetch_array($id);
+  $idUser = $iddone['idUser'];
 
   //Variables de la tarjeta
   $number = $_POST['number'];
@@ -24,7 +25,7 @@ if (isset($_POST['submit'])) {
   $address = $_POST['address'];
   $zipC = $_POST['zip'];
 
-  $query =" INSERT INTO Cards (numC, FV, ccv, idUser) VALUES ('$number','$exp','$ccv',1)";
+  $query =" INSERT INTO Cards (numC, FV, ccv, idUser) VALUES ('$number','$exp','$ccv','$email')";
   //Revisar si la tarjeta existe
   $RT = "SELECT idcard FROM Cards WHERE numC = '$number'";
   $q = mysqli_query($conn, $RT);
@@ -42,11 +43,11 @@ if (isset($_POST['submit'])) {
 ///////////////////////////////tabla ventas///////////////////////////////////////////////////////////////////
 
   $queryV = "INSERT INTO Sales (fecha, cantidad, total, idUser, idcard, address, zipC)
-  VALUES (current_date(),'$cantidad', '$total', 1,'$idC', '$address', '$zipC')";
+  VALUES (current_date(),'$cantidad', '$total', '$idUser','$idC', '$address', '$zipC')";
   if (mysqli_query($conn, $queryV)) {
-    echo "stringVenta";
+    echo "String Venta";
   }else {
-    echo "errorVenta";
+    print_r($iddone);
   }
 }
 

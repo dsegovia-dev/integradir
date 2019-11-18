@@ -89,7 +89,7 @@
                             <?php
                                 $email = $_GET['email'];
                             ?>
-                            <form id="personal-data" action="compra.php" method="post">
+                            <form id="personal-data" action="compra.php?email=<?php $email ?>" method="post">
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="form-group">
@@ -127,7 +127,6 @@
 
                         <div class="form-container">
 
-                            <input type="hidden" name="email" value="<?php $email ?>">
                             <input id="column-left" type="text" name="first-name" placeholder="First Name" />
                             <input id="column-right" type="text" name="last-name" placeholder="Surname" />
                             <input id="input-field" type="text" name="number" placeholder="Card Number" />
