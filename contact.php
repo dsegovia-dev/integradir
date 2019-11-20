@@ -88,8 +88,9 @@
                         <div class="contact-form-area">
                             <?php
                                 $email = $_GET['email'];
+                                echo $email;
                             ?>
-                            <form id="personal-data" action="compra.php?email=<?php $email ?>" method="post">
+                            <form id="personal-data" action="compra.php" method="post">
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="form-group">
@@ -127,6 +128,7 @@
 
                         <div class="form-container">
 
+                            <input type="hidden" name="email" value="<?php echo $email?>">
                             <input id="column-left" type="text" name="first-name" placeholder="First Name" />
                             <input id="column-right" type="text" name="last-name" placeholder="Surname" />
                             <input id="input-field" type="text" name="number" placeholder="Card Number" />

@@ -14,25 +14,30 @@ if (isset($_POST['submit'])) {
   $iddone = mysqli_fetch_array($id);
   $idUser = $iddone['idUser'];
 
+
+
+
   //Variables de la tarjeta
   $number = $_POST['number'];
   $exp = $_POST['expiry'];
   $ccv = $_POST['ccv'];
 
   //variables venta
+  $nombre = $_POST['first-name'];
+  $apellido = $_POST['last-name'];
   $cantidad = $_POST['cantidad'];
   $total = $cantidad * 49.99;
   $address = $_POST['address'];
   $zipC = $_POST['zip'];
 
-  $query =" INSERT INTO Cards (numC, FV, ccv, idUser) VALUES ('$number','$exp','$ccv','$email')";
+  $query =" INSERT INTO Cards (numC, FV, ccv, idUser) VALUES ('$number','$exp','$ccv','$idUser')";
   //Revisar si la tarjeta existe
   $RT = "SELECT idcard FROM Cards WHERE numC = '$number'";
   $q = mysqli_query($conn, $RT);
   $fetch = mysqli_fetch_array($q);
   $idC = $fetch['idcard'];
 
-  if ($fetch == null) {
+  if ($idC == null) {
     if(mysqli_query($conn, $query)){
         echo "stringTarjeta";
     }else{
@@ -46,11 +51,12 @@ if (isset($_POST['submit'])) {
   VALUES (current_date(),'$cantidad', '$total', '$idUser','$idC', '$address', '$zipC')";
   if (mysqli_query($conn, $queryV)) {
     echo "String Venta";
+    header("Location:send_mail.php?email= $email&zipC= $zipC&name= $nombre&lastName=$apellido&address=$address");
   }else {
-    print_r($iddone);
+    echo "error Venta";
+
   }
 }
-
 	mysqli_close($conn);
 
 ?>

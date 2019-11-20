@@ -1,9 +1,9 @@
 <?PHP
-    $email = $_POST["emailAddress"];
-    $name = $_POST["name"];
-    $lastName = $_POST["lastName"];
-    $address = $_POST["address"];
-    $zipCode = $_POST["zipCode"];
+    $email = $_GET["email"];
+    $name = $_GET["name"];
+    $lastName = $_GET["lastName"];
+    $address = $_GET["address"];
+    $zipCode = $_GET["zipC"];
 
     //correo para la empresa, confirmandole que un usuario hizo una compra
     $to = "ez.drums@gmail.com";
@@ -33,6 +33,23 @@
     //enviar correo a comprador, confirmando que su compra se registró
     mail($user,$usersubject,$usermessage,$userheaders);
 
+
+    echo $to;
+    echo "<br>";
+    echo $subject;
+    echo "<br>";
+    echo $message;
+    echo "<br>";
+    echo $headers;
+    echo "<br>";
+    echo $user;
+    echo "<br>";
+    echo $usersubject;
+    echo "<br>";
+    echo $usermessage;
+    echo "<br>";
+    echo $userheaders;
+    echo "<br>";
     //redireccionar a confirmacion
     exit;
 
